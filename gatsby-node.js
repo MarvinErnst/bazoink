@@ -11,8 +11,8 @@
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
 
-  const blogPostTemplate = path.resolve(`src/templates/BlogPost.js`);
-  const katzeTemplate = path.resolve(`src/templates/Katze.js`);
+  const blogPostTemplate = path.resolve(`src/templates/Blogpost.js`);
+  //const katzeTemplate = path.resolve(`src/templates/Katze.js`);
 
   return graphql(`
     {
@@ -36,20 +36,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      if(node.frontmatter.type === 'katze') {
-        createPage({
-          path: node.frontmatter.path,
-          component: katzeTemplate,
-          context: {}, // additional data can be passed via context
-        });
-      } else {
-        createPage({
-          path: node.frontmatter.path,
-          component: blogPostTemplate,
-          context: {}, // additional data can be passed via context
-        });
-      }
-
+      createPage({
+        path: node.frontmatter.path,
+        component: blogPostTemplate,
+        context: {}, // additional data can be passed via context
+      });
     });
   });
 };
