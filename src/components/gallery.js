@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 
 const GalleryContainer = styled.div`
-height: 100%;
+height: 100vh;
+width: 100%;
+position: fixed;
 overflow: hidden;
 `
 const Image = styled.div`
@@ -11,7 +13,9 @@ const Image = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: ${({src}) => src};
+  height: 100%;
+  width: 100%;
+  background-image: url(${({src}) => src});
   background-size: cover;
   background-repeat: no-repeat;
 `

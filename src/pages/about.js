@@ -11,11 +11,11 @@ import {
 } from 'react-spring';
 
 /** Animations */
-const animation = new AnimatedValue(0);
+const animation = new AnimatedValue(window.innerWidth-100);
 const show = (daata) => spring(animation, { to: window.innerWidth }).start((fata) => {
   push(daata);
 });
-const hide = () => spring(animation, { to: 0 }).start();
+const hide = () => spring(animation, { to: 0}).start();
 
 class SecondPage extends React.Component {
 
@@ -28,7 +28,20 @@ class SecondPage extends React.Component {
       <p>
       Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..</p>`
     }
-    hide();
+
+  }
+  componentDidMount = () => {
+    // hadling cover parallax
+    window.addEventListener('scroll', this.handleOnScroll)
+    setTimeout(hide, 1500);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleOnScroll)
+  }
+
+  handleOnScroll = (e) => {
+    console.log(e)
   }
 
   render() {

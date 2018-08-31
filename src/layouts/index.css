@@ -24,3 +24,12 @@ p {
   line-height: 28px;
   margin-bottom: 10px;
 }
+
+.hider {
+  left: 0;
+  height:100vh;
+  width: 100vw;
+  background: white;
+  z-index: 9;
+  position: fixed;
+}
