@@ -1,42 +1,55 @@
-import React from 'react'
-import Link, {push} from 'gatsby-link'
+import React, { Fragment } from 'react'
+import Link, { push } from 'gatsby-link'
+import Header from '../components/header';
+import Content from '../components/content';
+import { Main } from '../styles/generals';
 import {
-  Spring,
   AnimatedValue,
-   Transition,
-   animated,
-    Trail,
-    interpolate,
-    TimingAnimation,
-     controller as spring
+  animated,
+  controller as spring
 } from 'react-spring';
-const animation = new AnimatedValue(0)
+
+/** Animations */
+const animation = new AnimatedValue(0);
 const show = (daata) => spring(animation, { to: window.innerWidth }).start((fata) => {
-  push(daata)
+  push(daata);
 });
-const hide = () => spring(animation, { to: 0 }).start()
+const hide = () => spring(animation, { to: 0 }).start();
 
 class SecondPage extends React.Component {
 
   constructor() {
-    super()
-    hide()
+    super();
+    this.state = {
+      title: 'About',
+      subtitle: 'Dolore magni error est unde ',
+      text: `Eum velit qui voluptate et autem error maiores aliquam. Repellat blanditiis qui tempore ratione qui eligendi non magni. Dignissimos ipsa cumque veniam. Est voluptas voluptas. Dolore magni error est unde odio atque quis. Saepe quam magnam libero non et tempore dolores. Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..`
+    }
+    hide();
   }
 
   render() {
-
+    const { title, subtitle, text } = this.state;
     return (
-      <div style={{background: 'red'}}>
-       <animated.div className="hider" style={{width:animation}} />
+      <div>
+        <animated.div className="hider" style={{ width: animation }} />
+        <Content
+          left={
+            (
+              <Fragment>
+                <Header title={title} subtitle={subtitle} />
+                <Main>
+                  {text}
+                </Main>
+              </Fragment>
+            )
+          }
+        />
+        <p>
 
-     <header id="intro" class="mentions-header"><h1 class="mentions-h1">Contrat<span class="contrat-utilisation-title-mobileportrait"> d'utilisation</span></h1><div class="mentions-description-container"><div class="mentions-description-line-container"><div className="mentions-description-line"></div></div><div className="mentions-description">Mis à jour le 10 août 2017</div></div><div className="mentions-header-line-container"><div data-ix="mentionsheader-line" className="mentions-header-line" style="width: 100%; transition: width 2000ms ease 0s;"></div></div><div data-ix="opacity0-initial-2" className="mentions-header-wrapper" style="display: none; opacity: 0;"></div></header>
+        </p>
 
-
-
-      <button to="/" onClick={(e) => {show('/')}}>
-        Go back to the homepage
-      </button>
-    </div>
+      </div >
     )
   }
 }
