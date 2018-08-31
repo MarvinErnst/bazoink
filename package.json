@@ -6,6 +6,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "gatsby": "^1.9.277",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "gatsby-link": "^1.6.46",
     "gatsby-node-helpers": "^0.3.0",
     "gatsby-plugin-google-fonts": "0.0.4",
