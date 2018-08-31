@@ -37,8 +37,6 @@ fetchProducts = async (typePrefix, nodeName, url) => {
             }
         })
 
-
-
         return response.data.children
             .map(x => x.header)
             .map(x => Object.assign(x, {
@@ -49,6 +47,6 @@ fetchProducts = async (typePrefix, nodeName, url) => {
     }
     catch (error) {
         console.log(error)
-        throw e
+        throw error
     }
 }

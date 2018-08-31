@@ -4,13 +4,20 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    // {
+    //   resolve: 'grav-source-plugin',
+    //   options: {
+    //     typePrefix: 'Klosterweg',
+    //     nodeName: 'Pois',
+    //     url: 'http://192.168.100.113:8080/klosterweg/klosterweg'
+    //   },
+    // },
     {
-      resolve: 'grav-headless-plugin',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        typePrefix: 'Klosterweg',
-        nodeName: 'Pois',
-        url: 'http://192.168.100.113:8080/klosterweg/klosterweg'
-      },
+        name: `src`,
+        path: `${__dirname}/src/pages`
+      }
     },
     'gatsby-transformer-remark',
     'gatsby-plugin-page-transitions',
