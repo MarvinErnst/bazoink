@@ -23,22 +23,24 @@ const Subline = styled.div`
   opacity: .7;
   color: ${mainColor};
   font-size: 1em;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
 `;
+
 const LineContainer = styled.div`
 position: absolute;
 left: 0;
 right: 0;
 bottom: 0;
-`
+`;
 
 const Line = styled.div`
   width: ${props => props.width};
   transition: width 2000ms ease 0s;
   position: absolute;
   height: 1px;
+  top: ${props => props.top || 0}
   background-color: ${props => props.color || '#e6e6e6'}
 `
 
@@ -53,7 +55,7 @@ const Header = ({ title, subtitle }) => (
         width: 22,
         marginRight: 14
       }}>
-        <Line width="8px" color={mainColor} />
+        <Line width="22px" top="8px" color={mainColor} />
       </div>
       <Subline >{subtitle}</Subline>
     </SublineContainer>

@@ -5,11 +5,11 @@ const Container = styled.div`
   display: flex;
 `;
 const Left = styled.div`
-  flex: 1;
+  flex: 6;
   position: relative;
 `;
 const Right = styled.div`
-  flex: 1;
+  flex: 4;
   position: relative;
 `;
 
