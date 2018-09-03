@@ -7,6 +7,8 @@ import { Main, P } from '../styles/generals';
 import {
   AnimatedValue,
   animated,
+  Spring,
+  interpolate,
   controller as spring
 } from 'react-spring';
 
@@ -25,6 +27,12 @@ class SecondPage extends React.Component {
       title: 'About our team',
       subtitle: 'Dolore magni error est unde odio atque quis',
       text: `<p>Eum velit qui voluptate et autem error maiores aliquam. Repellat blanditiis qui tempore ratione qui eligendi non magni. Dignissimos ipsa cumque veniam. Est voluptas voluptas. Dolore magni error est unde odio atque quis. Saepe quam magnam libero non et tempore dolores.</p>
+      <p>
+      Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..</p><p>Eum velit qui voluptate et autem error maiores aliquam. Repellat blanditiis qui tempore ratione qui eligendi non magni. Dignissimos ipsa cumque veniam. Est voluptas voluptas. Dolore magni error est unde odio atque quis. Saepe quam magnam libero non et tempore dolores.</p>
+      <p>
+      Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..</p><h3>asldhaslkdh</h3><p>Eum velit qui voluptate et autem error maiores aliquam. Repellat blanditiis qui tempore ratione qui eligendi non magni. Dignissimos ipsa cumque veniam. Est voluptas voluptas. Dolore magni error est unde odio atque quis. Saepe quam magnam libero non et tempore dolores.</p>
+      <p>
+      Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..</p><p>Eum velit qui voluptate et autem error maiores aliquam. Repellat blanditiis qui tempore ratione qui eligendi non magni. Dignissimos ipsa cumque veniam. Est voluptas voluptas. Dolore magni error est unde odio atque quis. Saepe quam magnam libero non et tempore dolores.</p>
       <p>
       Repellat quam corporis non incidunt facere cumque. Id recusandae quidem autem commodi ex sit. Est quidem eaque dolores accusantium eveniet magni non. Eaque veritatis autem qui neque nihil deserunt. Quae quo cumque minima dolorem impedit aut hic. Animi error magni asperiores in mollitia. Quod vel sit accusantium quae iure. Ullam ut occaecati sunt placeat repellendus optio quaerat..</p>`
     }
@@ -54,7 +62,10 @@ class SecondPage extends React.Component {
             (
               <Fragment>
                 <Header title={title} subtitle={subtitle} />
-                <Main dangerouslySetInnerHTML={{ __html: text }} />
+
+                <Spring delay={2000} from={{ opacity: -10, y: '100px'}} to={{ opacity: 1, y:'0' }}>
+                  {({opacity, y}) => <Main style={{transform: `translate(0, ${y})`, opacity}} dangerouslySetInnerHTML={{ __html: text }}/>}
+                </Spring>
               </Fragment>
             )
           }
